@@ -1,0 +1,24 @@
+[Unit]
+Description=Home Mod - Honeypot discord bot
+After=network.target
+
+[Service]
+Type=simple
+User=homemod
+Group=homemod
+WorkingDirectory=/opt/home-mod
+
+# untracked
+EnvironmentFile=/etc/home-mod/config.env
+
+ExecStart=/opt/home-mod/.venv/bin/python main.py
+
+Restart=always
+RestartSec=5s
+
+ProtectSystem=strict
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
