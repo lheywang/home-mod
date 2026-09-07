@@ -1,6 +1,7 @@
 [Unit]
 Description=Home Mod - Honeypot discord bot
 After=network.target
+Wants=network-online.target
 
 [Service]
 Type=simple
@@ -9,9 +10,9 @@ Group=homemod
 WorkingDirectory=/opt/home-mod
 
 # untracked
-EnvironmentFile=/etc/home-mod/config.env
+EnvironmentFile=/opt/home-mod/config.env
 
-ExecStart=/opt/home-mod/.venv/bin/python main.py
+ExecStart=/opt/home-mod/.venv/bin/python src/bot.py
 
 Restart=always
 RestartSec=5s
